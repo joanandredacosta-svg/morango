@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 
 char imprime_menor(char *str)
 {
@@ -6,9 +7,7 @@ char imprime_menor(char *str)
 
     while(str[i])
     {
-        if(str[i] >= 'A' && str[i] <= 'Z')
-            str[i] += 32;
-        printf("%c", str[i]);
+        printf("%c", tolower(str[i]));
         i++;
     }
     return(0);
@@ -20,9 +19,7 @@ char imprime_maior(char *str)
 
     while(str[i])
     {
-        if(str[i] >= 'a' && str[i] <= 'z')
-            str[i] -= 32;
-        printf("%c", str[i]);
+        printf("%c", toupper(str[i]));
         i++;
     }
     return(0);
@@ -31,24 +28,20 @@ char imprime_maior(char *str)
 int main()
 {
     char str[101] = " ";
-    int i, maior = 0, menor = 0;
+    int i = 0, maior = 0, menor = 0;
 
     scanf("%s", str);
     while(str[i])
     {
-        if(str[i] >= 'A' && str[i] <= 'Z')
+        if(isupper(str[i]))
             maior++;
-        else if(str[i] >= 'a' && str[i] <= 'z')
+        else
             menor++;
         i++;
     }
     if(maior > menor)
-    {
         imprime_maior(str);
-    }
-    else if(menor >= maior)
-    {
+    else
         imprime_menor(str);
-    }
     return(0);
 }

@@ -19,17 +19,14 @@ int     banana(char *str, char c, int index)
 int main ()
 {
     char str[101] = "";
-    int i, conta = 0;
+    int conta = 0;
 
     scanf("%s", str);
-    i = 0;
-    while(str[i])
-    {
-            if(banana(str, str[i], i) == 0)
-                    conta++;
-        i++;
-    }
-    if(conta % 2 == 0)
+    for(int i=0; str[i]; i++) 
+        if(banana(str, str[i], i) == 0)
+            conta++;
+    
+    if(conta % 2 == 0) 
         printf("CHAT WITH HER!");
     else
         printf("IGNORE HIM!");
